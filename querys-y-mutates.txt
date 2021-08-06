@@ -1,0 +1,92 @@
+query GetEmpresa($id: String!) {
+	empresa(_id: $id) {
+		nombre
+		razon_social
+		domicilio
+		no_domicilio
+		cp
+		ciudad
+		estado
+		pais
+		rfc
+	}
+}
+
+query GetEmpresas($razon_social: String) {
+  empresas(razon_social: $razon_social) {
+    _id
+    nombre
+		razon_social
+		domicilio
+		no_domicilio
+		cp
+		ciudad
+		estado
+		pais
+		rfc
+  }
+}
+
+mutation CrearEmpresa($nombre: String!, $razon_social: String!, $domicilio: String, $no_domicilio: Int, $cp: Int, $ciudad: String!, $estado: String!, $pais: String!, $rfc: String!){
+  crearEmpresa(nombre: $nombre, razon_social: $razon_social, domicilio: $domicilio, no_domicilio: $no_domicilio, cp: $cp, ciudad: $ciudad, estado: $estado, pais: $pais, rfc: $rfc){
+    nombre
+    razon_social
+    domicilio
+    no_domicilio
+    cp
+    ciudad
+    estado
+    pais
+    rfc
+  }
+}
+
+
+mutation updateEmpresa($id: String!, $nombre: String!, $razon_social: String!, $domicilio: String, $no_domicilio: Int, $cp: Int, $ciudad: String!, $estado: String!, $pais: String!, $rfc: String!){
+  updateEmpresa(_id: $id, nombre: $nombre , razon_social: $razon_social, domicilio: $domicilio, no_domicilio: $no_domicilio, cp: $cp, ciudad: $ciudad, estado: $estado,  pais: $pais, rfc: $rfc) {
+    nombre
+		razon_social
+		domicilio
+		no_domicilio
+		cp
+		ciudad
+		estado
+		pais
+		rfc
+  }
+}
+
+mutation deleteEmpresa($id: String!) {
+  deleteEmpresa(_id: $id) {
+    nombre
+  }
+}
+
+QUERY VARIABLES para obtener empresa por ID y también eliminar empresa por ID
+{
+  "id": "610c43cffe2f50ee3de0228f"
+}
+
+QUERY VARIABLES para obtener todas las empresas se deja VACÍO y si se quiere buscar por todas las empresas con la misma razón social
+{
+  "razon_social": "SA de CV"
+}
+
+QUERY VARIABLES para actualizar empresa
+{
+        "id": "610c732f70d29d1d4d1c5fff",
+        "nombre": "Coca Cola",
+        "razon_social": "SA de CV",
+        "domicilio": "Periferico Sur",
+        "no_domicilio": 112,
+        "cp": 44460,
+        "ciudad": "Tlaquepaque",
+        "estado": "Jalisco",
+        "pais": "México",
+        "rfc": "345678fr5"
+}
+
+QUERY VARIABLES para eliminar empresa por ID
+{
+ "id": "610c48dbb1a00b067e820fa7" 
+}
